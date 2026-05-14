@@ -1100,116 +1100,99 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   body.print-compact-mode .app{display:none !important}
   body.print-compact-mode #printCompact{display:block !important;width:auto;min-height:auto;padding:0;margin:0}
 
-  /* ===== PRINT MODE: FULL (Perfil em 1 página + 1 empresa por página) ===== */
+  /* ===== PRINT MODE: FULL ===== */
+  /* Page 1: Perfil (cabeçalho + resumo executivo)
+     Pages 2-8: cada empresa em uma página
+     Final da Page 8: bloco Contato                                            */
   body.print-full-mode .page{display:none !important;page-break-before:auto !important}
   body.print-full-mode .page[data-page="perfil"]{display:block !important;page-break-after:always}
   body.print-full-mode .page[data-page="empresas"]{display:block !important;page-break-before:always}
 
-  /* ----- PERFIL: comprimir tudo para caber em UMA página A4 ----- */
+  /* ----- PERFIL (Page 1): só Hero + Resumo Executivo, sem trajetória/impacto/contato ----- */
   body.print-full-mode .page[data-page="perfil"] .page-header,
   body.print-full-mode .page[data-page="perfil"] .sec-title,
-  body.print-full-mode .page[data-page="perfil"] .sec-sub{display:none !important}
+  body.print-full-mode .page[data-page="perfil"] .sec-sub,
+  body.print-full-mode .page[data-page="perfil"] .traj,
+  body.print-full-mode .page[data-page="perfil"] .impact-grid,
+  body.print-full-mode .page[data-page="perfil"] .contact-grid{display:none !important}
 
-  /* Hero compacto */
-  body.print-full-mode .page[data-page="perfil"] .profile-hero{
-    padding:16px 20px;
-    margin-bottom:10px;
-    background:linear-gradient(135deg,#FFF 0%,#F8FAFE 100%) !important;
-    border:1px solid #E4E8F2 !important;
-    box-shadow:none !important;
-    gap:18px;
-    break-inside:avoid;
-    page-break-inside:avoid;
-  }
-  body.print-full-mode .page[data-page="perfil"] .profile-photo{
-    width:96px !important;height:96px !important;
-    box-shadow:none !important;
-    border-width:2px !important;
-  }
-  body.print-full-mode .page[data-page="perfil"] .profile-photo-wrap{margin:0 !important}
-  body.print-full-mode .page[data-page="perfil"] .ph-eyebrow{
-    margin-bottom:6px;padding:3px 9px;font-size:8.5pt;letter-spacing:1pt;
-  }
-  body.print-full-mode .page[data-page="perfil"] .ph-name{
-    font-size:18pt !important;margin-bottom:3px;line-height:1.05;
-  }
-  body.print-full-mode .page[data-page="perfil"] .ph-role{
-    font-size:9.5pt !important;margin-bottom:8px;gap:5px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .ph-desc{
-    font-size:8.5pt !important;line-height:1.5;max-width:none;
-  }
-  body.print-full-mode .page[data-page="perfil"] .ph-quick-contact{
-    margin-top:8px;gap:5px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .qc-chip{
-    font-size:8pt;padding:3px 8px;
-  }
-
-  /* Exec summary (Resumo Executivo) */
-  body.print-full-mode .page[data-page="perfil"] .exec-summary{
-    padding:10px 14px;margin-bottom:10px;
-    break-inside:avoid;page-break-inside:avoid;
-    box-shadow:none !important;
-  }
-  body.print-full-mode .page[data-page="perfil"] .exec-sum-title{
-    font-size:12pt;margin-bottom:5px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .exec-sum-text{
-    font-size:8.5pt;line-height:1.5;
-  }
-
-  /* Trajetória compacta */
-  body.print-full-mode .page[data-page="perfil"] .traj{
-    padding:6px 14px;margin-bottom:10px;
-    break-inside:avoid;page-break-inside:avoid;
-    box-shadow:none !important;
-  }
-  body.print-full-mode .page[data-page="perfil"] .traj-item{
-    padding:6px 0;gap:10px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .traj-logo{
-    width:30px;height:30px;padding:3px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .traj-name{font-size:10pt}
-  body.print-full-mode .page[data-page="perfil"] .traj-role{font-size:8pt;line-height:1.3}
-  body.print-full-mode .page[data-page="perfil"] .traj-period{font-size:7.5pt}
-  body.print-full-mode .page[data-page="perfil"] .traj-arrow{display:none !important}
-
-  /* Impacto: ocultar para economizar espaço (já tem em métricas das empresas) */
-  body.print-full-mode .page[data-page="perfil"] .impact-grid{display:none !important}
-
-  /* Contato: linha compacta */
-  body.print-full-mode .page[data-page="perfil"] .contact-grid{
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:6px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .contact-card{
-    padding:8px 12px;gap:9px;
-    box-shadow:none !important;
-    break-inside:avoid;
-  }
-  body.print-full-mode .page[data-page="perfil"] .contact-icon{
-    width:28px;height:28px;border-radius:7px;
-  }
-  body.print-full-mode .page[data-page="perfil"] .contact-icon svg{width:13px;height:13px}
-  body.print-full-mode .page[data-page="perfil"] .contact-label{font-size:7pt;margin-bottom:0}
-  body.print-full-mode .page[data-page="perfil"] .contact-val{font-size:9pt;line-height:1.2}
-
-  /* Hide anchors that have no content */
   body.print-full-mode .page[data-page="perfil"] #anchor-trajetoria,
   body.print-full-mode .page[data-page="perfil"] #anchor-impacto,
   body.print-full-mode .page[data-page="perfil"] #anchor-contato,
   body.print-full-mode .page[data-page="perfil"] #anchor-resumo{display:none !important}
 
-  /* Force color adjust for the whole Perfil page in print */
+  /* Hero estilizado como na imagem 1 */
+  body.print-full-mode .page[data-page="perfil"] .profile-hero{
+    padding:24px 28px;
+    margin-bottom:14px;
+    background:linear-gradient(135deg,#FFF 0%,#F8FAFE 100%) !important;
+    border:1px solid #E4E8F2 !important;
+    border-radius:12pt;
+    box-shadow:none !important;
+    gap:22px;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  body.print-full-mode .page[data-page="perfil"] .profile-photo{
+    width:140px !important;height:140px !important;
+    border-radius:18px !important;
+    box-shadow:0 8px 22px rgba(14,23,38,.15) !important;
+    border:4px solid #FFF !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .profile-photo-wrap{margin:0 !important}
+
+  /* Eyebrow VERDE como na imagem 1 */
+  body.print-full-mode .page[data-page="perfil"] .ph-eyebrow{
+    background:#E6F4EA !important;color:#0F9D58 !important;
+    padding:5px 12px !important;font-size:9pt;letter-spacing:1.2pt;
+    margin-bottom:14px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-eyebrow .pulse{
+    background:#0F9D58 !important;animation:none;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-name{
+    font-size:26pt !important;margin-bottom:8px;line-height:1.05;letter-spacing:-.8pt;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-name em{color:#1E5CDB !important}
+  body.print-full-mode .page[data-page="perfil"] .ph-role{
+    font-size:11pt !important;margin-bottom:14px;gap:7px;color:#4A5580 !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-desc{
+    font-size:10pt !important;line-height:1.65;max-width:none;color:#4A5580 !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-desc strong{color:#0E1726 !important;font-weight:600}
+  body.print-full-mode .page[data-page="perfil"] .ph-quick-contact{
+    margin-top:14px;gap:7px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .qc-chip{
+    font-size:9pt;padding:5px 11px;background:#FFF !important;border:1px solid #C5CFE4 !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .qc-chip-wa svg{color:#25D366 !important}
+  body.print-full-mode .page[data-page="perfil"] .qc-chip svg{width:11pt;height:11pt}
+
+  /* Resumo Executivo */
+  body.print-full-mode .page[data-page="perfil"] .exec-summary{
+    padding:18px 22px;margin-bottom:0;
+    border:1px solid #E4E8F2 !important;border-radius:10pt;
+    box-shadow:none !important;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  body.print-full-mode .page[data-page="perfil"] .exec-sum-title{
+    font-size:14pt;margin-bottom:8px;color:#0E1726 !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .exec-sum-text{
+    font-size:10pt;line-height:1.65;color:#4A5580 !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .exec-sum-text strong{color:#0E1726 !important;font-weight:600}
+
+  /* Cor exata em todos elementos */
   body.print-full-mode .page[data-page="perfil"] *{
     -webkit-print-color-adjust:exact !important;
     print-color-adjust:exact !important;
     color-adjust:exact !important;
   }
 
-  /* ----- EMPRESAS: uma empresa por página ----- */
+  /* ----- EMPRESAS (Pages 2-8): uma empresa por página ----- */
   body.print-full-mode .page[data-page="empresas"] .emp-toolbar,
   body.print-full-mode .page[data-page="empresas"] .emp-toolbar-bottom{display:none !important}
   body.print-full-mode .page[data-page="empresas"] .page-header{display:none !important}
@@ -1230,6 +1213,22 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     print-color-adjust:exact !important;
     color-adjust:exact !important;
   }
+
+  /* ----- BLOCO CONTATO (no fim do print full) ----- */
+  body.print-full-mode #printFullContato{
+    display:block !important;
+    margin-top:18px;
+    page-break-before:auto;
+    break-inside:avoid;
+    page-break-inside:avoid;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  body.print-full-mode #printFullContato *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;
+  }
 }
 
 /* ====== PRINT MODE: COMPACT (onepage) ====== */
@@ -1242,6 +1241,54 @@ body.print-compact-mode #printCompact{
   background:#fff;color:#0E1726;
   font-family:'Plus Jakarta Sans',sans-serif;font-size:10pt;line-height:1.4;
   margin:0 auto;
+}
+
+/* ====== PRINT FULL CONTATO BLOCK (hidden except in print-full-mode) ====== */
+.print-full-contato{display:none}
+.print-full-contato .pfc-header{display:flex;align-items:center;gap:10pt;margin-bottom:3pt}
+.print-full-contato .pfc-num{
+  font-size:9pt;font-weight:600;color:#1E5CDB;
+  background:#E8EFFC;width:22pt;height:22pt;border-radius:5pt;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0;
+}
+.print-full-contato .pfc-title{
+  font-family:'Playfair Display',serif;
+  font-size:18pt;font-weight:600;color:#0E1726;
+  letter-spacing:-.4pt;margin:0;line-height:1;
+}
+.print-full-contato .pfc-sub{
+  font-size:9pt;color:#8A93B8;
+  margin:0 0 12pt 32pt;
+}
+.print-full-contato .pfc-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:8pt;
+}
+.print-full-contato .pfc-card{
+  display:flex;align-items:center;gap:8pt;
+  padding:10pt 11pt;
+  background:#FFF;border:1pt solid #E4E8F2;border-radius:9pt;
+  break-inside:avoid;
+}
+.print-full-contato .pfc-icon{
+  width:30pt;height:30pt;border-radius:7pt;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.print-full-contato .pfc-icon svg{width:14pt;height:14pt}
+.print-full-contato .pfc-phone .pfc-icon{background:#E6F4EA;color:#0F9D58}
+.print-full-contato .pfc-wa .pfc-icon{background:#D6F5E0;color:#1FAE54}
+.print-full-contato .pfc-email .pfc-icon{background:#FDE7E9;color:#D93025}
+.print-full-contato .pfc-linkedin .pfc-icon{background:#E1EFFF;color:#0A66C2}
+.print-full-contato .pfc-map .pfc-icon{background:#FDECEC;color:#E53935}
+.print-full-contato .pfc-text{flex:1;min-width:0;line-height:1.2}
+.print-full-contato .pfc-label{
+  font-size:6.5pt;font-weight:700;color:#8A93B8;
+  text-transform:uppercase;letter-spacing:.7pt;margin-bottom:2pt;
+}
+.print-full-contato .pfc-val{
+  font-size:8.5pt;font-weight:600;color:#0E1726;
+  word-break:break-word;line-height:1.25;
 }
 
 /* Print compact internal styles */
@@ -2866,6 +2913,37 @@ body.print-compact-mode #printCompact{
         <div>2× Melhor Projeto de Finanças — Arcos Dourados</div>
         <div>Prêmio Destaque DIOP — Amil</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRINT FULL — bloco de Contato que aparece no fim da última empresa -->
+<div id="printFullContato" class="print-full-contato">
+  <div class="pfc-header">
+    <span class="pfc-num">03</span>
+    <h2 class="pfc-title">Contato</h2>
+  </div>
+  <p class="pfc-sub">Vamos conversar sobre oportunidades</p>
+  <div class="pfc-grid">
+    <div class="pfc-card pfc-phone">
+      <div class="pfc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+      <div class="pfc-text"><div class="pfc-label">Telefone</div><div class="pfc-val">+55 11 99621-0033</div></div>
+    </div>
+    <div class="pfc-card pfc-wa">
+      <div class="pfc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div>
+      <div class="pfc-text"><div class="pfc-label">WhatsApp</div><div class="pfc-val">Mensagem direta</div></div>
+    </div>
+    <div class="pfc-card pfc-email">
+      <div class="pfc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="pfc-text"><div class="pfc-label">E-mail</div><div class="pfc-val">felipe.apostolopulos@hotmail.com</div></div>
+    </div>
+    <div class="pfc-card pfc-linkedin">
+      <div class="pfc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+      <div class="pfc-text"><div class="pfc-label">LinkedIn</div><div class="pfc-val">/in/felipe-henrique-apostolopulos</div></div>
+    </div>
+    <div class="pfc-card pfc-map">
+      <div class="pfc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></div>
+      <div class="pfc-text"><div class="pfc-label">Localização</div><div class="pfc-val">Rua Adelino Cardana, 431 · Barueri, SP</div></div>
     </div>
   </div>
 </div>
