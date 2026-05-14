@@ -198,9 +198,53 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   background:var(--amber-lt);padding:2px 8px;border-radius:99px;
   letter-spacing:.2px;
 }
-/* Projetos page: push gallery up by reducing top spacing */
-.page[data-page="projetos"]{margin-top:-12px}
-.page[data-page="projetos"] .page-header-compact{margin-bottom:14px}
+
+/* ===== PROJETOS: ONE-PAGE LAYOUT (desktop only) ===== */
+/* When Projetos page is active, the main area becomes a viewport-height flex column
+   so the gallery fits without page scroll. Uses :has() and body class fallback. */
+@media (min-width:841px){
+  body.on-projetos .main,
+  body:has(.page[data-page="projetos"].active) .main{
+    padding-top:18px;padding-bottom:18px;
+    height:100vh;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  body.on-projetos .page[data-page="projetos"],
+  .page[data-page="projetos"]{
+    margin-top:0;
+    flex:1;min-height:0;
+    display:flex;flex-direction:column;
+  }
+  .page[data-page="projetos"] .page-header-compact{
+    flex-shrink:0;
+    margin-bottom:10px;padding-bottom:8px;
+  }
+  .page[data-page="projetos"] .page-header-compact .page-title{font-size:22px;margin-bottom:2px}
+  .page[data-page="projetos"] .page-header-compact .page-sub{font-size:11.5px;line-height:1.4}
+  .page[data-page="projetos"] .gallery{
+    flex:1;min-height:0;
+    margin-bottom:0;
+    display:flex;flex-direction:column;
+    max-width:880px;
+    padding:14px 16px;
+  }
+  .page[data-page="projetos"] .gallery-stage{
+    flex:1;min-height:0;
+  }
+  .page[data-page="projetos"] .gal-viewport{
+    aspect-ratio:auto;
+    height:100%;
+  }
+  .page[data-page="projetos"] .gal-meta{
+    flex-shrink:0;
+    margin-top:10px;padding-top:8px;
+  }
+  .page[data-page="projetos"] .gal-thumbs{
+    flex-shrink:0;
+    margin-top:8px;padding-bottom:4px;
+  }
+  .page[data-page="projetos"] .gal-thumb{width:72px;height:48px}
+}
 
 /* ====== PERFIL PAGE ====== */
 .profile-hero{
@@ -2766,6 +2810,8 @@ document.addEventListener('keydown', e => {
 function nav(page, anchor){
   // Switch active page
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.dataset.page === page));
+  // Toggle body class for one-page Projetos layout (fallback for browsers without :has)
+  document.body.classList.toggle('on-projetos', page === 'projetos');
   // Update active nav item
   document.querySelectorAll('.nav-item, .emp-list-item').forEach(i => i.classList.remove('active'));
   if(page === 'empresas' && anchor){
