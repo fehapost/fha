@@ -176,6 +176,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   margin-bottom:32px;padding-bottom:20px;
   border-bottom:1px solid var(--border);
 }
+.page-header-compact{
+  margin-bottom:16px;padding-bottom:12px;
+}
+.page-header-compact .page-eyebrow{margin-bottom:4px;font-size:10px;letter-spacing:1.6px}
+.page-header-compact .page-title{font-size:26px;margin-bottom:4px;line-height:1.05}
+.page-header-compact .page-sub{font-size:12px;line-height:1.45;max-width:none}
 .page-eyebrow{
   font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
   color:var(--blue);margin-bottom:8px;
@@ -186,6 +192,15 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 }
 .page-title em{font-style:normal;color:var(--blue);font-weight:500}
 .page-sub{font-size:14px;color:var(--text2);max-width:720px}
+.page-sub-note{
+  display:inline-block;margin-left:6px;
+  font-size:11px;color:var(--amber);font-weight:500;
+  background:var(--amber-lt);padding:2px 8px;border-radius:99px;
+  letter-spacing:.2px;
+}
+/* Projetos page: push gallery up by reducing top spacing */
+.page[data-page="projetos"]{margin-top:-12px}
+.page[data-page="projetos"] .page-header-compact{margin-bottom:14px}
 
 /* ====== PERFIL PAGE ====== */
 .profile-hero{
@@ -524,8 +539,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .gallery{
   background:var(--surface);border-radius:var(--radius);
   border:1px solid var(--border);box-shadow:var(--shadow);
-  padding:24px;margin-bottom:24px;
-  max-width:700px;margin-left:auto;margin-right:auto;
+  padding:18px;margin-bottom:18px;
+  max-width:770px;margin-left:auto;margin-right:auto;
 }
 .gallery-stage{
   position:relative;
@@ -2200,10 +2215,10 @@ body.print-compact-mode #printCompact{
 
   <!-- ====================== PROJETOS ====================== -->
   <div class="page" data-page="projetos">
-    <div class="page-header">
+    <div class="page-header page-header-compact">
       <div class="page-eyebrow">Portfólio</div>
       <h1 class="page-title">Projetos <em>realizados</em></h1>
-      <p class="page-sub">Galeria com os principais projetos entregues ao longo da carreira. Use as setas para navegar, ative o autoplay ou clique em uma miniatura.</p>
+      <p class="page-sub">Use as setas para navegar, ative o autoplay ou clique em uma miniatura. <span class="page-sub-note">⚠ As informações exibidas foram alteradas e são fictícias, para preservar dados confidenciais das empresas.</span></p>
     </div>
 
     <!-- Carousel principal -->
