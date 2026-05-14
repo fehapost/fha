@@ -2877,6 +2877,15 @@ function printPdf(mode){
     // Abrir TODOS os cards de empresa
     document.querySelectorAll('.company-page').forEach(c => c.classList.add('open'));
     updateToggleAllLabel();
+
+    // Mover o cabeçalho para o início do body (para aparecer ANTES das empresas no print)
+    const header = document.getElementById('printFullHeader');
+    const headerOriginalParent = header ? header.parentNode : null;
+    const headerOriginalNext = header ? header.nextSibling : null;
+    if(header){
+      document.body.insertBefore(header, document.body.firstChild);
+    }
+
     // Ativar modo de print full
     document.body.classList.add('print-full-mode');
     const delay = onEmpresas ? 250 : 650;
@@ -2886,6 +2895,14 @@ function printPdf(mode){
         window.print();
         setTimeout(() => {
           document.body.classList.remove('print-full-mode');
+          // Devolver o header para sua posição original
+          if(header && headerOriginalParent){
+            if(headerOriginalNext){
+              headerOriginalParent.insertBefore(header, headerOriginalNext);
+            } else {
+              headerOriginalParent.appendChild(header);
+            }
+          }
         }, 400);
       }, 100);
     }, delay);
