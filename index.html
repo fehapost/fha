@@ -1100,30 +1100,136 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   body.print-compact-mode .app{display:none !important}
   body.print-compact-mode #printCompact{display:block !important;width:auto;min-height:auto;padding:0;margin:0}
 
-  /* ===== PRINT MODE: FULL (Perfil + Empresas) ===== */
+  /* ===== PRINT MODE: FULL (Perfil em 1 página + 1 empresa por página) ===== */
   body.print-full-mode .page{display:none !important;page-break-before:auto !important}
   body.print-full-mode .page[data-page="perfil"]{display:block !important;page-break-after:always}
   body.print-full-mode .page[data-page="empresas"]{display:block !important;page-break-before:always}
-  /* Perfil tweaks for print */
+
+  /* ----- PERFIL: comprimir tudo para caber em UMA página A4 ----- */
+  body.print-full-mode .page[data-page="perfil"] .page-header,
+  body.print-full-mode .page[data-page="perfil"] .sec-title,
+  body.print-full-mode .page[data-page="perfil"] .sec-sub{display:none !important}
+
+  /* Hero compacto */
   body.print-full-mode .page[data-page="perfil"] .profile-hero{
-    padding:24px 26px;break-inside:avoid;
+    padding:16px 20px;
+    margin-bottom:10px;
+    background:linear-gradient(135deg,#FFF 0%,#F8FAFE 100%) !important;
+    border:1px solid #E4E8F2 !important;
+    box-shadow:none !important;
+    gap:18px;
+    break-inside:avoid;
+    page-break-inside:avoid;
   }
-  body.print-full-mode .page[data-page="perfil"] .profile-photo{width:140px;height:140px}
-  body.print-full-mode .page[data-page="perfil"] .ph-name{font-size:28px}
-  body.print-full-mode .page[data-page="perfil"] .ph-eyebrow{margin-bottom:10px}
-  body.print-full-mode .page[data-page="perfil"] .exec-summary{padding:16px 20px;break-inside:avoid}
-  body.print-full-mode .page[data-page="perfil"] .traj-arrow,
-  body.print-full-mode .page[data-page="perfil"] .contact-card .contact-icon{
-    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  body.print-full-mode .page[data-page="perfil"] .profile-photo{
+    width:96px !important;height:96px !important;
+    box-shadow:none !important;
+    border-width:2px !important;
   }
-  /* Hide section title "01" "02" "03" badges if any (they look weird in print) */
-  /* Empresas tweaks (already correct from generic print rules) */
+  body.print-full-mode .page[data-page="perfil"] .profile-photo-wrap{margin:0 !important}
+  body.print-full-mode .page[data-page="perfil"] .ph-eyebrow{
+    margin-bottom:6px;padding:3px 9px;font-size:8.5pt;letter-spacing:1pt;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-name{
+    font-size:18pt !important;margin-bottom:3px;line-height:1.05;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-role{
+    font-size:9.5pt !important;margin-bottom:8px;gap:5px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-desc{
+    font-size:8.5pt !important;line-height:1.5;max-width:none;
+  }
+  body.print-full-mode .page[data-page="perfil"] .ph-quick-contact{
+    margin-top:8px;gap:5px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .qc-chip{
+    font-size:8pt;padding:3px 8px;
+  }
+
+  /* Exec summary (Resumo Executivo) */
+  body.print-full-mode .page[data-page="perfil"] .exec-summary{
+    padding:10px 14px;margin-bottom:10px;
+    break-inside:avoid;page-break-inside:avoid;
+    box-shadow:none !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .exec-sum-title{
+    font-size:12pt;margin-bottom:5px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .exec-sum-text{
+    font-size:8.5pt;line-height:1.5;
+  }
+
+  /* Trajetória compacta */
+  body.print-full-mode .page[data-page="perfil"] .traj{
+    padding:6px 14px;margin-bottom:10px;
+    break-inside:avoid;page-break-inside:avoid;
+    box-shadow:none !important;
+  }
+  body.print-full-mode .page[data-page="perfil"] .traj-item{
+    padding:6px 0;gap:10px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .traj-logo{
+    width:30px;height:30px;padding:3px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .traj-name{font-size:10pt}
+  body.print-full-mode .page[data-page="perfil"] .traj-role{font-size:8pt;line-height:1.3}
+  body.print-full-mode .page[data-page="perfil"] .traj-period{font-size:7.5pt}
+  body.print-full-mode .page[data-page="perfil"] .traj-arrow{display:none !important}
+
+  /* Impacto: ocultar para economizar espaço (já tem em métricas das empresas) */
+  body.print-full-mode .page[data-page="perfil"] .impact-grid{display:none !important}
+
+  /* Contato: linha compacta */
+  body.print-full-mode .page[data-page="perfil"] .contact-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:6px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .contact-card{
+    padding:8px 12px;gap:9px;
+    box-shadow:none !important;
+    break-inside:avoid;
+  }
+  body.print-full-mode .page[data-page="perfil"] .contact-icon{
+    width:28px;height:28px;border-radius:7px;
+  }
+  body.print-full-mode .page[data-page="perfil"] .contact-icon svg{width:13px;height:13px}
+  body.print-full-mode .page[data-page="perfil"] .contact-label{font-size:7pt;margin-bottom:0}
+  body.print-full-mode .page[data-page="perfil"] .contact-val{font-size:9pt;line-height:1.2}
+
+  /* Hide anchors that have no content */
+  body.print-full-mode .page[data-page="perfil"] #anchor-trajetoria,
+  body.print-full-mode .page[data-page="perfil"] #anchor-impacto,
+  body.print-full-mode .page[data-page="perfil"] #anchor-contato,
+  body.print-full-mode .page[data-page="perfil"] #anchor-resumo{display:none !important}
+
+  /* Force color adjust for the whole Perfil page in print */
+  body.print-full-mode .page[data-page="perfil"] *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;
+  }
+
+  /* ----- EMPRESAS: uma empresa por página ----- */
   body.print-full-mode .page[data-page="empresas"] .emp-toolbar,
   body.print-full-mode .page[data-page="empresas"] .emp-toolbar-bottom{display:none !important}
-  body.print-full-mode .page[data-page="empresas"] .page-header{
-    margin-bottom:14px;padding-bottom:10px;
+  body.print-full-mode .page[data-page="empresas"] .page-header{display:none !important}
+
+  body.print-full-mode .company-page{
+    page-break-before:always !important;
+    page-break-after:auto !important;
+    page-break-inside:avoid !important;
+    break-inside:avoid !important;
+    box-shadow:none !important;
+    border:1px solid #E4E8F2 !important;
+    padding:22px 26px !important;
+    margin-bottom:0 !important;
   }
-  body.print-full-mode .page[data-page="empresas"] .page-title{font-size:22px}
+  body.print-full-mode .company-page:first-of-type{page-break-before:auto !important}
+  body.print-full-mode .company-page *{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;
+  }
 }
 
 /* ====== PRINT MODE: COMPACT (onepage) ====== */
