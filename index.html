@@ -1189,6 +1189,57 @@ body.print-compact-mode #printCompact{
 }
 .print-full-header .pfh-summary strong{color:#0E1726;font-weight:700}
 
+/* Skills compactos na Page 1 */
+.print-full-header .pfh-skills{
+  margin-top:10pt;
+  display:grid;grid-template-columns:1.15fr 1fr;gap:14pt;
+}
+.print-full-header .pfh-skills-section{break-inside:avoid}
+.print-full-header .pfh-skills-title{
+  font-family:'Playfair Display',serif;
+  font-size:12pt;font-weight:600;color:#0E1726;
+  letter-spacing:-.2pt;margin:0 0 6pt 0;
+  padding-bottom:3pt;border-bottom:1pt solid #E4E8F2;
+}
+.print-full-header .pfh-skills-group{margin-bottom:6pt}
+.print-full-header .pfh-skills-group-name{
+  font-size:8pt;font-weight:700;color:#1E5CDB;
+  text-transform:uppercase;letter-spacing:.4pt;
+  margin-bottom:3pt;
+}
+.print-full-header .pfh-tags{
+  display:flex;flex-wrap:wrap;gap:3pt;
+}
+.print-full-header .pfh-tags span{
+  font-size:7.5pt;color:#1E5CDB;background:#E8EFFC;
+  padding:1.5pt 6pt;border-radius:99pt;
+  line-height:1.25;font-weight:500;
+}
+.print-full-header .pfh-soft-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4pt 8pt;
+}
+.print-full-header .pfh-soft-item{
+  display:flex;gap:5pt;align-items:flex-start;
+  break-inside:avoid;
+}
+.print-full-header .pfh-soft-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:7pt;font-weight:700;
+  color:#1E5CDB;background:#E8EFFC;
+  padding:1.5pt 5pt;border-radius:3pt;
+  flex-shrink:0;line-height:1.2;
+  letter-spacing:.3pt;
+}
+.print-full-header .pfh-soft-content{flex:1;min-width:0}
+.print-full-header .pfh-soft-name{
+  font-size:8.5pt;font-weight:700;color:#0E1726;
+  line-height:1.2;margin-bottom:1pt;
+}
+.print-full-header .pfh-soft-desc{
+  font-size:7.5pt;color:#4A5580;
+  line-height:1.3;
+}
+
 /* Print compact internal styles */
 .print-compact-doc{
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -2833,6 +2884,85 @@ body.print-compact-mode #printCompact{
   <p class="pfh-summary">
     <strong>Atualmente Gerente/Coordenador de Informações de RH na Coca-Cola FEMSA.</strong> Profissional sênior em FP&amp;A e Business Intelligence com mais de 15 anos em empresas de grande porte (McDonald&#39;s, Marisa, Elog, Amil). Especialista em P&amp;L gerencial, orçamento &amp; forecast, governança de KPIs, automação de processos e dashboards executivos com impacto nacional em +1.000 unidades.
   </p>
+
+  <!-- Hard Skills + Soft Skills compactos para caber na Page 1 -->
+  <div class="pfh-skills">
+    <div class="pfh-skills-section">
+      <h3 class="pfh-skills-title">Hard Skills</h3>
+      <div class="pfh-skills-group">
+        <div class="pfh-skills-group-name">FP&amp;A &amp; Finanças</div>
+        <div class="pfh-tags">
+          <span>Orçamento</span><span>Forecast</span><span>P&amp;L Gerencial</span><span>Real vs Orçado</span><span>Business Partner</span><span>Análise de Variações</span>
+        </div>
+      </div>
+      <div class="pfh-skills-group">
+        <div class="pfh-skills-group-name">Business Intelligence</div>
+        <div class="pfh-tags">
+          <span>Power BI</span><span>DAX</span><span>Linguagem M</span><span>Dashboards</span><span>KPIs</span><span>Storytelling Executivo</span>
+        </div>
+      </div>
+      <div class="pfh-skills-group">
+        <div class="pfh-skills-group-name">Automação &amp; Sistemas</div>
+        <div class="pfh-tags">
+          <span>Excel Avançado</span><span>VBA</span><span>SAP</span><span>SAP BPC</span><span>EPM</span><span>SQL</span><span>Databricks</span><span>Cognos</span>
+        </div>
+      </div>
+      <div class="pfh-skills-group">
+        <div class="pfh-skills-group-name">IA &amp; Data</div>
+        <div class="pfh-tags">
+          <span>ChatGPT</span><span>Claude</span><span>Microsoft Copilot</span><span>Prompt Engineering</span><span>IA aplicada a FP&amp;A</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pfh-skills-section">
+      <h3 class="pfh-skills-title">Soft Skills</h3>
+      <div class="pfh-soft-grid">
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">01</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Pensamento analítico</div>
+            <div class="pfh-soft-desc">Decisões orientadas por dados e estruturação de problemas complexos.</div>
+          </div>
+        </div>
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">02</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Comunicação executiva</div>
+            <div class="pfh-soft-desc">Tradução de dados técnicos para a linguagem de diretoria e C-level.</div>
+          </div>
+        </div>
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">03</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Business Partner</div>
+            <div class="pfh-soft-desc">Atuação consultiva com áreas de RH, Operações, Finanças e Diretoria.</div>
+          </div>
+        </div>
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">04</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Melhoria contínua</div>
+            <div class="pfh-soft-desc">Aplicação prática de Kaizen, GEROT e 5W2H para redução de desperdício.</div>
+          </div>
+        </div>
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">05</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Liderança técnica</div>
+            <div class="pfh-soft-desc">Instrutor de VBA há 8 anos · mentoria de equipes em projetos de BI.</div>
+          </div>
+        </div>
+        <div class="pfh-soft-item">
+          <span class="pfh-soft-num">06</span>
+          <div class="pfh-soft-content">
+            <div class="pfh-soft-name">Resiliência analítica</div>
+            <div class="pfh-soft-desc">Atuação em ciclos de orçamento, fechamentos e mudanças de cenário.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
