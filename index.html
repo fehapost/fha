@@ -1196,6 +1196,16 @@ body.print-compact-mode #printCompact{
   width:72pt;height:72pt;border-radius:7pt;flex-shrink:0;
   border:2pt solid #1E5CDB;
   object-fit:cover;object-position:center 28%;display:block;
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
+  color-adjust:exact !important;
+}
+/* Force print color adjust em todo o printFullHeader (foto, ícones, badges, etc) */
+.print-full-header,
+.print-full-header *{
+  -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
+  color-adjust:exact !important;
 }
 .print-full-header .pfh-info{flex:1;min-width:0}
 .print-full-header .pfh-eyebrow{
@@ -1362,32 +1372,34 @@ body.print-compact-mode #printCompact{
 /* Linha horizontal conectando os círculos */
 .pf-timeline-track::before{
   content:'';position:absolute;
-  top:18pt; /* metade da altura do círculo (36/2) */
+  top:24pt; /* metade da altura do círculo (48/2) */
   left:8%;right:8%;height:1.2pt;
   background:#1E5CDB;
   z-index:0;
 }
 .pf-timeline .pft-item{
   position:relative;z-index:1;
-  display:flex;flex-direction:column;align-items:center;gap:3pt;
+  display:flex;flex-direction:column;align-items:center;gap:4pt;
   flex:1;min-width:0;
 }
 .pf-timeline .pft-circle{
-  width:36pt;height:36pt;border-radius:50%;
+  width:48pt;height:48pt;border-radius:50%;
   background:#FFF;border:1.5pt solid #1E5CDB;
   display:flex;align-items:center;justify-content:center;
-  padding:5pt;flex-shrink:0;
+  padding:6pt;flex-shrink:0;
   box-shadow:0 1pt 3pt rgba(30,92,219,.15);
+  overflow:hidden;
 }
 .pf-timeline .pft-circle img{
   max-width:100%;max-height:100%;object-fit:contain;
+  display:block;
 }
-/* Logo backgrounds */
-.pf-timeline .pft-circle.bg-yellow{background:#FFCC00;border-color:#FFCC00;padding:3pt}
-.pf-timeline .pft-circle.bg-arcos{padding:2pt}
+/* Logo backgrounds especiais */
+.pf-timeline .pft-circle.bg-yellow{background:#FFCC00;border-color:#FFCC00;padding:4pt}
+.pf-timeline .pft-circle.bg-arcos{padding:3pt}
 .pf-timeline .pft-year{
   font-family:'JetBrains Mono',monospace;
-  font-size:7.5pt;font-weight:700;color:#1E5CDB;
+  font-size:8pt;font-weight:700;color:#1E5CDB;
   letter-spacing:.3pt;text-align:center;
 }
 /* Inactive state (other companies on company pages) */
@@ -1404,8 +1416,8 @@ body.print-compact-mode #printCompact{
 /* Show timeline ONLY in print-full-mode */
 body.print-full-mode .pf-timeline{
   display:block !important;
-  margin-top:10pt;
-  padding-top:6pt;
+  margin-top:12pt;
+  padding-top:7pt;
   border-top:1pt dashed #C5CCDA;
 }
 body.print-full-mode .pf-timeline,
